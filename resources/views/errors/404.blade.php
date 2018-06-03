@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Forbidden</title>
+    <title>Not Found</title>
   </head>
   <body>
-    Forbidden
+    Not Found
   </body>
 </html>
