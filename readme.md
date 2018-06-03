@@ -1,6 +1,6 @@
 # Laravel Multi Database Connection
 Satu aplikasi menggunakan lebih dari satu database.
-- Menambah dan menghapus database baru
+- Menambah dan menghapus database melalui aplikasi
 - Membuat user untuk tiap database
 
 ## Instalasi
@@ -14,5 +14,5 @@ $ cp .env.example .env
 $ composer install
 $ php artisan key:generate
 ```
-- Migrate database
+- Migrate dan seed database
 - Jalankan project
