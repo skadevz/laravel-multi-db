@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
   </head>
 
   <body>
