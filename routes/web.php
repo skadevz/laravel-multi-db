@@ -50,8 +50,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
   });
 
-  // Route::group(['middleware' => 'role:admin|setDB'], function() {
-  Route::group(['middleware' => 'role:admin'], function() {
+  Route::group(['middleware' => ['role:admin', 'set_database']], function() {
     Route::group(['prefix' => 'ekstrakurikuler'], function() {
       Route::get('/', 'EkstrakurikulerController@index')->name('ekstrakurikuler_index');
       Route::get('/create', 'EkstrakurikulerController@create')->name('ekstrakurikuler_create');
