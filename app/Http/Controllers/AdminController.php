@@ -34,4 +34,32 @@ class AdminController extends Controller
       alert()->success('Admin Berhasil Ditambahkan', 'Admin')->persistent('Tutup');
       return redirect()->route('admin_index');
     }
+
+    public function edit($id)
+    {
+      $admin = User::findOrFail($id);
+      return view('admin.edit', ['data' => $admin]);
+    }
+
+    public function update(Request $request)
+    {
+      $id = $request->id;
+      $admin = User::findOrFail($id);
+      $admin->name = $request->name;
+      $admin->username = $request->username;
+      if ($request->password != null) {
+        $admin->password = bcrypt($request->password);
+      }
+      $admin->save();
+      alert()->success('Admin Berhasil Diubah', 'Admin')->persistent('Tutup');
+      return redirect()->route('admin_index');
+    }
+
+    public function delete($id)
+    {
+      $admin = User::findOrFail($id);
+      $admin->delete();
+      alert()->success('Admin Berhasil Dihapus', 'Admin')->persistent('Tutup');
+      return redirect()->route('admin_index');
+    }
 }

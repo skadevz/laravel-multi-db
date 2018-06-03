@@ -36,11 +36,14 @@
                 <td>{{ $no++ }}</td>
                 <td>{{ $value->nama }}</td>
                 <td>{{ $value->pembina }}</td>
-                <td></td>
+                <td>
+                  <a href="{{ route('ekstrakurikuler_edit', ['id' => $value->id]) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ubah Ekstrakurikuler"><i class="fa fa-pencil fa-fw"></i></a>
+                  <a href="{{ route('ekstrakurikuler_delete', ['id' => $value->id]) }}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Ekstrakurikuler"><i class="fa fa-trash fa-fw"></i></a>
+                </td>
               </tr>
             @empty
               <tr>
-                <td colspan="5" class="text-center">Tidak Ada Data</td>
+                <td colspan="4" class="text-center">Tidak Ada Data</td>
               </tr>
             @endforelse
           </tbody>

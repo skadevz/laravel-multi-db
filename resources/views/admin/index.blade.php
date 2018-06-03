@@ -38,7 +38,10 @@
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->username }}</td>
                 <td>{{ $value->sekolah->nama }}</td>
-                <td></td>
+                <td>
+                  <a href="{{ route('admin_edit', ['id' => $value->id]) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ubah Admin"><i class="fa fa-pencil fa-fw"></i></a>
+                  <a href="{{ route('admin_delete', ['id' => $value->id]) }}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Admin"><i class="fa fa-trash fa-fw"></i></a>
+                </td>
               </tr>
             @empty
               <tr>
