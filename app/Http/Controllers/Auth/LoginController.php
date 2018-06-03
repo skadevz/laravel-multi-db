@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use Entrust;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,36 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function get_login()
+    {
+      return view('auth.login');
+    }
+
+    public function post_login()
+    {
+      $username = request()->username;
+      $password = request()->password;
+      $remember = request()->remember;
+
+      if (Auth::attempt(['username' => $username, 'password' => $password], $remember)) {
+        if (Auth::viaRemember()) {
+          if (Entrust::hasRole('root')) {
+            return redirect()->route('cloud_index');
+          } else {
+            return redirect()->route('ekstrakurikuler_index');
+          }
+        }
+        if (Entrust::hasRole('root')) {
+          return redirect()->route('cloud_index');
+        } else {
+          return redirect()->route('ekstrakurikuler_index');
+        }
+      } else {
+        $message = 'Username atau Password Tidak Sesuai';
+        alert()->error($message, 'Login')->persistent('Tutup');
+        return redirect()->route('get_login')->withErrors($message);
+      }
     }
 }
