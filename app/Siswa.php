@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
+    protected $connection = 'sas_db';
+
     protected $table = 'siswa';
 
     protected $fillable = [
