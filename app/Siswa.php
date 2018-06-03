@@ -12,5 +12,10 @@ class Siswa extends Model
 
     protected $fillable = [
       'nis', 'nama', 'kelas', 'ekstrakurikuler_id',
-    ]
+    ];
+
+    public function ekstrakurikuler()
+    {
+      return $this->belongsTo(Ekstrakurikuler::class);
+    }
 }
