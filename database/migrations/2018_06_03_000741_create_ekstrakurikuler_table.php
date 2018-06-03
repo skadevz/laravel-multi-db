@@ -15,6 +15,8 @@ class CreateEkstrakurikulerTable extends Migration
     {
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nama');
+            $table->string('pembina');
             $table->timestamps();
         });
     }

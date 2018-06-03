@@ -15,6 +15,11 @@ class CreateSiswaTable extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nis');
+            $table->string('nama');
+            $table->string('kelas');
+            $table->unsignedInteger('ekstrakurikuler_id')->nullable();
+            $table->foreign('ekstrakurikuler_id')->references('id')->on('ekstrakurikuler')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
